@@ -1,0 +1,18 @@
+<div class="jumbotron">
+  <h1 class="display-3">Single Level Child1</h1>
+  <p>
+    single-level-child1 works!
+  </p>
+  <pre class="card">
+    <![CDATA[
+const routes: Routes = [
+  {path: '', component: AppComponent, children: [
+    {path: 'single', component: SingleLevelComponent, data: { title: 'Single Level Routing' }},
+]},
+];
+export const appRoutes = RouterModule.forRoot(routes, {useHash: false});
+// For Link
+<a class="nav-link" routerLink="/single" routerLinkActive="active">Single Level</a>
+    ]]>
+  </pre>
+</div>

@@ -1,0 +1,17 @@
+<div class="jumbotron">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item" *ngFor="let bread of breadcrumb; let i= last" [ngClass]="{'active': i}">
+      <div *ngIf="!i; else elseBlock">
+        <a routerLink="/{{bread.url}}">{{bread.title}}</a>
+      </div>
+      <ng-template #elseBlock>
+        {{bread.title}}
+      </ng-template>
+    </li>
+  </ol>
+  <h1 class="display-3">Double Level Child3</h1>
+  <p>
+    double-level-child3 works!
+  </p>
+  <p *ngIf="parameter" class="text-primary">Parameter got {{parameter}}</p>
+</div>
