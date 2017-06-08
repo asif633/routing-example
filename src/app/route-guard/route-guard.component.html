@@ -1,5 +1,7 @@
-<p>
-  route-guard works!
-</p>
-<h3>For AuthGuard and CanActivate check the link</h3>
-<a href="https://www.bongtechs.com/angular2-firebase-authentication-implementation/">Angular2 Firebase Authentication</a>
+<div class="container">
+  <h3>For AuthGuard and CanActivate check the link</h3>
+  <button (click)="logout()" class="btn btn-outline-danger">Logout</button>
+  <a href="https://www.bongtechs.com/angular2-firebase-authentication-implementation/">Angular2 Firebase Authentication</a>
+  <a [routerLink]="['category']" class="nav nav-link" routerLinkActive="active">Category Table</a>
+  <router-outlet></router-outlet>
+</div>

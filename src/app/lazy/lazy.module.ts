@@ -8,18 +8,19 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../../environments/environment';
 import { HttpModule } from '@angular/http';
+import { ProductsResolver } from '../shared/products.resolver';
 
 @NgModule({
   imports: [
     CommonModule,
     appRoutes,
-    AngularFireDatabaseModule, // imports firebase/database, only needed for database features
+    //AngularFireDatabaseModule, // imports firebase/database, only needed for database features
     HttpModule
   ],
   declarations: [
     CardsContainerComponent,
     CardComponent
   ],
-  providers: [ ProductService ]
+  providers: [ ProductService, ProductsResolver ]
 })
 export class LazyModule { }

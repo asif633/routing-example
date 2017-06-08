@@ -1,4 +1,4 @@
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { AppComponent } from './app.component';
 import { SingleLevelComponent } from './single-level/single-level.component';
 import { DoubleLevelComponent } from './double-level/double-level.component';
@@ -11,6 +11,8 @@ import { QueryParamsComponent } from './query-params/query-params.component';
 import { QueryParamsChildComponent } from './query-params-child/query-params-child.component';
 import { QueryParamsGrandChildComponent } from './query-params-grand-child/query-params-grand-child.component';
 import { RouteGuardComponent } from './route-guard/route-guard.component';
+import { AuthGuard } from './shared/authguard.service';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 const routes: Routes = [
     {path: '', component: AppComponent, children: [
@@ -31,11 +33,12 @@ const routes: Routes = [
                 {path: 'grandchild', component: QueryParamsGrandChildComponent}
             ]},
         ]},
-        {path: 'routeGurad', component: RouteGuardComponent},
-        {path: 'lazy', loadChildren: './lazy/lazy.module#LazyModule'}
+        {path: 'routeGuard', loadChildren: './route-guard/route-guard.module#RouteGuardModule', canLoad: [AuthGuard]},
+        {path: 'lazy', loadChildren: './lazy/lazy.module#LazyModule'},
+        {path: 'signin', component: SignInComponent}
     ]},
     { path: '', redirectTo: '/single', pathMatch: 'full'},
   { path: '**', component: PageNotFoundComponent }
 ];
 
-export const appRoutes = RouterModule.forRoot(routes, {useHash: false});
+export const appRoutes = RouterModule.forRoot(routes, {useHash: false, preloadingStrategy: PreloadAllModules});

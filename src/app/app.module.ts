@@ -17,9 +17,13 @@ import { RouteParamsComponent } from './route-params/route-params.component';
 import { QueryParamsComponent } from './query-params/query-params.component';
 import { QueryParamsChildComponent } from './query-params-child/query-params-child.component';
 import { QueryParamsGrandChildComponent } from './query-params-grand-child/query-params-grand-child.component';
-import { RouteGuardComponent } from './route-guard/route-guard.component';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment.prod';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SignInComponent } from './sign-in/sign-in.component';
+import { AuthGuard } from './shared/authguard.service';
+import { LoginService } from './shared/login.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,7 @@ import { environment } from '../environments/environment.prod';
     QueryParamsComponent,
     QueryParamsChildComponent,
     QueryParamsGrandChildComponent,
-    RouteGuardComponent,
+    SignInComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,9 +47,11 @@ import { environment } from '../environments/environment.prod';
     HttpModule,
     appRoutes,
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebase), // imports firebase/app needed for everything
+    BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [ AuthGuard, LoginService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
